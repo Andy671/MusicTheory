@@ -8,6 +8,7 @@ package com.kekstudio.musictheorytest;
 import com.kekstudio.musictheory.Chord;
 import com.kekstudio.musictheory.Key;
 import com.kekstudio.musictheory.Note;
+import com.kekstudio.musictheory.Scale;
 import java.util.Arrays;
 
 /**
@@ -16,32 +17,28 @@ import java.util.Arrays;
  */
 public class Sample {
     public static void main(String[] args) {
-//        Note cFlatNote = new Note("Cb");
-        Key cFlatMajor = new Key("Cb", "major");
-        Chord cFlatbII = cFlatMajor.chord("I", "dim");
-        System.out.println(cFlatbII);
-        cFlatbII.setPosition(2);
-        cFlatbII.sort();
-        System.out.println(cFlatbII);
-//        XCTAssertEqual(cFlatbII.names, ["D♭♭", "F♭", "A♭♭"],
+        Note dSharpNote = new Note("D#");
+        System.out.println(dSharpNote); // D#4[63]
+
+        dSharpNote = new Note("D#", 5);
+        System.out.println(dSharpNote); // D#5[75]
         
-//              Map<String, Interval> tempIntervals = new HashMap<>();
-//        tempIntervals.put("m2", new Interval(1, 1));
-//        tempIntervals.put("M2", new Interval(1, 2));
-//        tempIntervals.put("m3", new Interval(2, 3));
-//        tempIntervals.put("M3", new Interval(2, 4));
-//        tempIntervals.put("P4", new Interval(3, 5));
-//        tempIntervals.put("A4", new Interval(3, 6));
-//        tempIntervals.put("d5", new Interval(4, 6));
-//        tempIntervals.put("P5", new Interval(4, 7));
-//        tempIntervals.put("A5", new Interval(4, 8));
-//        tempIntervals.put("m6", new Interval(5, 8));
-//        tempIntervals.put("M6", new Interval(5, 9));
-//        tempIntervals.put("d7", new Interval(6, 9));
-//        tempIntervals.put("m7", new Interval(6, 10));
-//        tempIntervals.put("M7", new Interval(6, 11));
-//        tempIntervals.put("A7", new Interval(6, 12));
-//        tempIntervals.put("P8", new Interval(7, 12));
+        Chord dSharpm7Chord = dSharpNote.chord("m7"); 
+        System.out.println(dSharpm7Chord); //{D#5[75], F#5[78], A#5[82], C#6[85]}
+        
+        Scale dSharpScale = dSharpNote.scale("minor");
+        System.out.println(dSharpScale); //{D#5[75], E#5[77], F#5[78], G#5[80], A#5[82], B5[83], C#6[85]}
+        
+        Key cFlatMajorKey = new Key("Cb", "major");
+        
+        Chord thirdFlatDegreeAugChord = cFlatMajorKey.chord("bIII", "aug");
+        System.out.println(thirdFlatDegreeAugChord); //{Ebb4[62], Gb4[66], Bb4[70]}
+        
+        thirdFlatDegreeAugChord.setPosition(1);
+        System.out.println(thirdFlatDegreeAugChord); //{Bb5[82], Ebb4[62], Gb4[66]}
+        
+        thirdFlatDegreeAugChord.sort();
+        System.out.println(thirdFlatDegreeAugChord); //{Ebb4[62], Gb4[66], Bb5[82]}
     }
    
 }
