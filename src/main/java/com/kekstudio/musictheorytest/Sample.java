@@ -6,8 +6,12 @@
 package com.kekstudio.musictheorytest;
 
 import com.kekstudio.musictheory.Chord;
+import com.kekstudio.musictheory.Chord;
+import com.kekstudio.musictheory.Key;
 import com.kekstudio.musictheory.Key;
 import com.kekstudio.musictheory.Note;
+import com.kekstudio.musictheory.Note;
+import com.kekstudio.musictheory.Scale;
 import com.kekstudio.musictheory.Scale;
 import java.util.Arrays;
 
