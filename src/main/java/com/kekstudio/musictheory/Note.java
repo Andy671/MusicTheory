@@ -37,8 +37,12 @@ public class Note implements Comparable<Note>  {
         letter = name.substring(0,1);
         
         List<String> alphabet = new ArrayList<>(Arrays.asList(Music.Alphabet));
+         
         letterIndex = alphabet.indexOf(letter);
-        
+        if(letterIndex == -1){
+            throw new MusicTheoryException("Wrong note name '" + letter + "' in '" + name + "'");
+        }
+            
         this.value = generateMidiValue();
     }
     
@@ -65,6 +69,8 @@ public class Note implements Comparable<Note>  {
                 midiValue++;
             }else if(accident == Music.FLAT){
                 midiValue--;
+            }else{
+                throw new MusicTheoryException("Wrong note accidental name '" + accident + "' in '" + name + "'");
             }
         }
         midiValue += (this.octave + 1) * 12;
@@ -78,6 +84,9 @@ public class Note implements Comparable<Note>  {
      * @return the generated Scale.
      */
     public Scale scale(String scaleType){
+        if(!Music.Scales.containsKey(scaleType)){
+            throw new MusicTheoryException("Unknown scale type name '" + scaleType + "'");
+        }
         return new Scale(this, Music.Scales.get(scaleType));
     }
     
@@ -87,6 +96,9 @@ public class Note implements Comparable<Note>  {
      * @return chord
      */
     public Chord chord(String chordType){
+        if(!Music.Chords.containsKey(chordType)){
+            throw new MusicTheoryException("Unknown chord type name '" + chordType + "'");
+        }
         return new Chord(this, Music.Chords.get(chordType));
     }
 
@@ -96,6 +108,9 @@ public class Note implements Comparable<Note>  {
      * @return the new note.
      */
     public Note add(String intervalSymbol){
+        if(!Music.Intervals.containsKey(intervalSymbol)){
+            throw new MusicTheoryException("Unknown interval symbol name '" + intervalSymbol + "'");
+        }
         Interval interval = Music.Intervals.get(intervalSymbol);
         int noteLetterValue = Music.Notes.get(this.letter);
         int resultantLetterIndex = (this.letterIndex + interval.degree) % Music.Alphabet.length;
