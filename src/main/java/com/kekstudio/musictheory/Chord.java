@@ -18,6 +18,13 @@ public class Chord extends Scale{
      */
     public Chord(Note rootNote, String[] intervals) {
         super(rootNote, intervals);
+        if(!Music.ChordsInverse.containsKey(intervals)){
+            String intervalsString = " ";
+            for(String str : intervals)
+                intervalsString += str + " ";
+            
+            throw new MusicTheoryException("Unknown chord with intervals '" + intervalsString + "'");
+        }
         name = rootNote.getName() + Music.ChordsInverse.get(intervals);
         octave = rootNote.getOctave();
         position = 0;

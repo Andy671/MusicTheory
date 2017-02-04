@@ -6,14 +6,9 @@
 package com.kekstudio.musictheorytest;
 
 import com.kekstudio.musictheory.Chord;
-import com.kekstudio.musictheory.Chord;
-import com.kekstudio.musictheory.Key;
 import com.kekstudio.musictheory.Key;
 import com.kekstudio.musictheory.Note;
-import com.kekstudio.musictheory.Note;
 import com.kekstudio.musictheory.Scale;
-import com.kekstudio.musictheory.Scale;
-import java.util.Arrays;
 
 /**
  *
@@ -21,6 +16,7 @@ import java.util.Arrays;
  */
 public class Sample {
     public static void main(String[] args) {
+        
         Note dSharpNote = new Note("D#");
         System.out.println(dSharpNote); // D#4[63]
 
@@ -43,6 +39,7 @@ public class Sample {
         
         thirdFlatDegreeAugChord.sort();
         System.out.println(thirdFlatDegreeAugChord); //{Ebb4[62], Gb4[66], Bb5[82]}
+        
     }
    
 }
