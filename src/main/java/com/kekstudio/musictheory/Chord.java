@@ -86,5 +86,16 @@ public class Chord extends Scale{
     public int getPosition(){
         return position;
     }
+    
+    @Override
+    public String toString() {
+        String returnString = name + " inversion[" + String.valueOf(position) + "] {";
+        for(Note note : notes){
+            returnString += note.toString() + ", ";
+        }
+        returnString = returnString.substring(0, returnString.length()-2);
+        returnString += "}";
+        return returnString;
+    }    
 
 }

@@ -82,6 +82,10 @@ public class Music {
      * A dictionary of scale names and their intervals.
      */
     public static final Map<String, String[]> Scales;
+    /**
+     * An inverse dictionary of scale names and their intervals.
+     */
+    public static final Map<String[], String> ScalesInverse;
     static{
         Map<String, String[]> tempScales = new HashMap<>();
         tempScales.put("major", new String[]{"M2", "M3", "P4", "P5", "M6", "M7"});
@@ -93,6 +97,13 @@ public class Music {
         tempScales.put("locrian", new String[]{"m2", "m3", "P4", "d5", "m6", "m7"});
         
         Scales = Collections.unmodifiableMap(tempScales);
+        
+        Map<String[], String> tempScalesInverse = new HashMap<>();
+        for(String key :tempScales.keySet()){
+            tempScalesInverse.put(tempScales.get(key), key);
+        }
+        
+        ScalesInverse = Collections.unmodifiableMap(tempScalesInverse);
     }
 
     /**

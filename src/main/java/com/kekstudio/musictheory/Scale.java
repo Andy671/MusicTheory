@@ -10,6 +10,7 @@ import java.util.Arrays;
 public class Scale {
     
     protected Note[] notes;
+    private String[] intervals;
 
     /**
      * Initializes the scale with a root note and intervals.
@@ -17,6 +18,8 @@ public class Scale {
      * @param intervals an array of interval symbols for the scale.
      */
     public Scale(Note rootNote, String[] intervals){
+        this.intervals = intervals;
+        
         notes = new Note[intervals.length + 1];
         notes[0] = rootNote;
         
@@ -68,7 +71,11 @@ public class Scale {
 
     @Override
     public String toString() {
-        String returnString = "{";
+        String returnString  = getRoot().getName() + " ";
+        if(Music.ScalesInverse.containsKey(intervals)){
+            returnString += Music.ScalesInverse.get(intervals) + " ";
+        }
+        returnString += "scale {";
         for(Note note : notes){
             returnString += note.toString() + ", ";
         }

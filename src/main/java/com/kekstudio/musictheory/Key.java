@@ -69,7 +69,7 @@ public class Key implements Comparable<Key> {
 
     @Override
     public String toString() {
-        return name + " " + scaleKeyType;
+        return name + " key";
     }
 
 }
