@@ -7,29 +7,29 @@ package com.kekstudio.musictheory;
 public class Key implements Comparable<Key> {
     
     private Note note;
-    private String quality;
+    private String scaleKeyType;
     private String name;
     private Scale scale;
     
     /**
      * Initializes the key with a name and a quality.
      * @param noteName the key note.
-     * @param quality
+     * @param scaleKeyType
      */
-    public Key(String noteName, String quality){
-        this(new Note(noteName),  quality);
+    public Key(String noteName, String scaleKeyType){
+        this(new Note(noteName),  scaleKeyType);
     }
     
     /**
      * Initializes the key with a note and a quality.
      * @param note the key note.
-     * @param quality the quality of the key .
+     * @param scaleKeyType the quality of the key .
      */
-    public Key(Note note, String quality){
+    public Key(Note note, String scaleKeyType){
         this.note = note;
-        this.name = note.getName() + " " + quality;
-        this.quality = quality;
-        scale = note.scale(quality);
+        this.name = note.getName() + " " + scaleKeyType;
+        this.scaleKeyType = scaleKeyType;
+        scale = note.scale(scaleKeyType);
     }
     
     /**
@@ -46,6 +46,9 @@ public class Key implements Comparable<Key> {
           degreeSymbol = degree.substring(1);
         }
 
+        if(!Music.Degrees.contains(degreeSymbol)){
+            throw new MusicTheoryException("Unknown degree symbol name '" + degreeSymbol + "'");
+        }
         int scaleIndex = Music.Degrees.indexOf(degreeSymbol);
         Note rootNote = this.scale.notes[scaleIndex].copy();
         
@@ -66,7 +69,7 @@ public class Key implements Comparable<Key> {
 
     @Override
     public String toString() {
-        return name + " " + quality;
+        return name + " " + scaleKeyType;
     }
 
 }
