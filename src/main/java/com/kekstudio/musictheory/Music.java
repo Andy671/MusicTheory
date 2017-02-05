@@ -116,26 +116,26 @@ public class Music {
     public static final Map<String[], String> ChordsInverse;
     static{
         Map<String, String[]> tempChords = new HashMap<>();
-        tempChords.put("min", new String[]{"m3", "P5"});
+        tempChords.put("m", new String[]{"m3", "P5"});
         tempChords.put("maj", new String[]{"M3", "P5"});
         tempChords.put("dim", new String[]{"m3", "d5"});
         tempChords.put("aug", new String[]{"M3", "A5"});
         tempChords.put("sus", new String[]{"P4", "P5"});
         tempChords.put("sus2", new String[]{"M2", "P5"});
         tempChords.put("m2", new String[]{"M2", "m3", "P5"});
-        tempChords.put("M2", new String[]{"M2", "M3", "P5"});
+        tempChords.put("maj2", new String[]{"M2", "M3", "P5"});
         tempChords.put("m6", new String[]{"m3", "P5", "M6"});
-        tempChords.put("M6", new String[]{"M3", "P5", "M6"});
+        tempChords.put("maj6", new String[]{"M3", "P5", "M6"});
         tempChords.put("7", new String[]{"M3", "P5", "m7"});
         tempChords.put("m7", new String[]{"m3", "P5", "m7"});
-        tempChords.put("M7", new String[]{"M3", "P5", "M7"});
+        tempChords.put("maj7", new String[]{"M3", "P5", "M7"});
         tempChords.put("7sus", new String[]{"P4", "P5", "m7"});
         tempChords.put("dim7", new String[]{"m3", "d5", "d7"});
-        tempChords.put("m7♭5", new String[]{"m3", "d5", "m7"});
-        tempChords.put("mM7", new String[]{"m3", "P5", "M7"});
+        tempChords.put("m7b5", new String[]{"m3", "d5", "m7"});
+        tempChords.put("mmaj7", new String[]{"m3", "P5", "M7"});
         tempChords.put("aug7", new String[]{"M3", "A5", "m7"});
-        tempChords.put("M7♭5", new String[]{"M3", "d5", "M7"});
-        tempChords.put("M7♯5", new String[]{"M3", "A5", "M7"});
+        tempChords.put("maj7b5", new String[]{"M3", "d5", "M7"});
+        tempChords.put("maj7#5", new String[]{"M3", "A5", "M7"});
         
         Chords = Collections.unmodifiableMap(tempChords);
         
