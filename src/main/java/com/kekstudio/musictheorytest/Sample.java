@@ -33,13 +33,13 @@ public class Sample {
         System.out.println(cFlatMajorKey); // Cb major key
         
         Chord thirdFlatDegreeAugChord = cFlatMajorKey.chord("bIII", "aug");
-        System.out.println(thirdFlatDegreeAugChord); // Ebbaug inversion[0] {Ebb4[62], Gb4[66], Bb4[70]}
+        System.out.println(thirdFlatDegreeAugChord); // Ebbaug bIII+ inversion[0] {Ebb4[62], Gb4[66], Bb4[70]}
         
         thirdFlatDegreeAugChord.setPosition(1);
-        System.out.println(thirdFlatDegreeAugChord); // Ebbaug inversion[1] {Bb5[82], Ebb4[62], Gb4[66]}
+        System.out.println(thirdFlatDegreeAugChord); // Ebbaug bIII+ inversion[1] {Bb5[82], Ebb4[62], Gb4[66]}
         
         thirdFlatDegreeAugChord.sort();
-        System.out.println(thirdFlatDegreeAugChord); // Ebbaug inversion[1] {Ebb4[62], Gb4[66], Bb5[82]}
+        System.out.println(thirdFlatDegreeAugChord); // Ebbaug bIII+ inversion[1] {Ebb4[62], Gb4[66], Bb5[82]}
         
     }
    
