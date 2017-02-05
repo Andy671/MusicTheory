@@ -10,6 +10,7 @@ public class Chord extends Scale{
     private String name;
     private int octave;
     private int position;
+    private String theoryDegree = "";
     
     /**
      * Initializes the chord with a root note and intervals.
@@ -70,6 +71,14 @@ public class Chord extends Scale{
         
         this.position = position;
     }
+    
+    /**
+     *  Sets Roman numeral string
+     * @param theoryDegree 
+     */
+    public void setTheoryDegree(String theoryDegree){
+        this.theoryDegree = theoryDegree;
+    }
       
     /**
      * Gets the octave of the chord
@@ -87,9 +96,17 @@ public class Chord extends Scale{
         return position;
     }
     
+    /**
+     * Gets Roman numeral of the chord (works only if was created from the key)
+     * @return Roman Numeral (e.g. iv7, bV, IV)
+     */
+    public String getTheoryDegree(){
+        return theoryDegree;
+    }
+    
     @Override
     public String toString() {
-        String returnString = name + " inversion[" + String.valueOf(position) + "] {";
+        String returnString = name + " " + getTheoryDegree() + " inversion[" + String.valueOf(position) + "] {";
         for(Note note : notes){
             returnString += note.toString() + ", ";
         }
@@ -98,4 +115,34 @@ public class Chord extends Scale{
         return returnString;
     }    
 
+    
+    public static String toTheoryDegree(String baseRomanDegree, String chordType){
+        if(!Music.Chords.containsKey(chordType)){
+            throw new MusicTheoryException("Unknown chord type '" + chordType + "'");
+        }
+        
+        String newRoman = baseRomanDegree;
+        String newChordType;
+        
+        if(chordType.contains("m") && !chordType.contains("maj")){
+            newRoman = newRoman.toLowerCase();
+        }
+        
+        switch (chordType) {
+            case "dim":
+                newChordType = chordType.replace("dim", "°");
+                break;
+            case "aug":
+                newChordType = chordType.replace("aug", "+");
+                break;
+            default:
+                newChordType = chordType.replace("m", "");
+                newChordType = newChordType.replace("aj", "");
+                break;
+        }
+        
+        newRoman += newChordType;
+        
+        return newRoman;
+    }
 }

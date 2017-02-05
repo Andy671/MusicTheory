@@ -57,8 +57,11 @@ public class Key implements Comparable<Key> {
         } else if (flatOrSharp == Music.SHARP) {
           Note.semitoneUp(rootNote);
         }
-
-        return rootNote.chord(type);
+        
+        Chord returnChord = rootNote.chord(type);
+        returnChord.setTheoryDegree(Chord.toTheoryDegree(degree, type));
+        
+        return returnChord;
     }
 
     
