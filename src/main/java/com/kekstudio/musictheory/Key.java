@@ -12,12 +12,42 @@ public class Key implements Comparable<Key> {
     private Scale scale;
     
     /**
-     * Initializes the key with a name and a quality.
+     * Initializes the key with a name and a quality. Automatic alteration is enabled(based on Music.ScaleAlterations).
+     * If you want to set custom alteration - use constructor with autoAlteration == false.
      * @param noteName the key note.
      * @param scaleKeyType
      */
     public Key(String noteName, String scaleKeyType){
-        this(new Note(noteName),  scaleKeyType);
+        this(noteName,  scaleKeyType, true);
+    }
+    
+    /**
+     * Initializes the key with a name and a quality. 
+     * @param noteName the key note.
+     * @param scaleKeyType
+     * @param autoAlteration enable alteration based on Music.ScaleAlterations.
+     */
+    public Key(String noteName, String scaleKeyType, boolean autoAlteration){
+        if(autoAlteration && noteName.length() > 1){
+            if(!Music.ScaleAlterations.containsKey(scaleKeyType)){
+                throw new MusicTheoryException("Unknown key/scale type name '" + scaleKeyType + "'");
+            }
+            String letter = noteName.substring(0,1);
+            if(!Music.Notes.containsKey(letter)){
+                throw new MusicTheoryException("Wrong note name '" + letter + "' in '" + noteName + "'");
+            }
+            int index = Music.Notes.get(letter);
+            if(noteName.charAt(1) == Music.FLAT){
+                index = (index-1)%12;
+                if(index < 0) index += 12;
+            }else if(noteName.charAt(1) == Music.SHARP){
+                index = (index+1)%12;
+            }else {
+                throw new MusicTheoryException("Wrong note name '" + noteName + "'");
+            }
+            noteName = Music.ScaleAlterations.get(scaleKeyType)[index];
+        }
+        init(new Note(noteName), scaleKeyType);
     }
     
     /**
@@ -26,6 +56,10 @@ public class Key implements Comparable<Key> {
      * @param scaleKeyType the quality of the key .
      */
     public Key(Note note, String scaleKeyType){
+        init(note, scaleKeyType);
+    }
+    
+    private void init(Note note, String scaleKeyType){
         this.note = note;
         this.name = note.getName() + " " + scaleKeyType;
         this.scaleKeyType = scaleKeyType;
@@ -62,8 +96,7 @@ public class Key implements Comparable<Key> {
         returnChord.setTheoryDegree(Chord.toTheoryDegree(degree, type));
         
         return returnChord;
-    }
-
+    } 
     
     @Override
     public int compareTo(Key otherKey) {
