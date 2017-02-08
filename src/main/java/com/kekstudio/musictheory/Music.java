@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * Music Theory Base.
- * @author Andy
+ * @author Andy671
  */
 public class Music {
     
@@ -105,6 +105,24 @@ public class Music {
         
         ScalesInverse = Collections.unmodifiableMap(tempScalesInverse);
     }
+    
+     /**
+     * A dictionary of scale root notes alterations.
+     */
+    public static final Map<String, String[]> ScaleAlterations;
+   
+    static{
+        Map<String, String[]> tempAlterations = new HashMap<>();
+        tempAlterations.put("major", new String[]{"C", "D"+FLAT, "D", "E"+FLAT, "E", "F", "F"+SHARP, "G", "A"+FLAT, "A", "B"+FLAT, "B" });
+        tempAlterations.put("minor", new String[]{"C", "C"+SHARP, "D", "D"+SHARP, "E", "F", "F"+SHARP, "G", "G"+SHARP, "A", "B"+FLAT, "B" });
+        tempAlterations.put("dorian", new String[]{"C", "C"+SHARP, "D", "E"+FLAT, "E", "F", "F"+SHARP, "G", "G"+SHARP, "A", "B"+FLAT, "B" });
+        tempAlterations.put("phrygian", new String[]{"C", "C"+SHARP, "D", "D"+SHARP, "E", "F", "F"+SHARP, "G", "G"+SHARP, "A", "A"+SHARP, "B" });
+        tempAlterations.put("lydian", new String[]{"C", "D"+FLAT, "D", "E"+FLAT, "E", "F", "G"+FLAT, "G", "A"+FLAT, "A", "B"+FLAT, "B" });
+        tempAlterations.put("mixolydian", new String[]{"C", "C"+SHARP, "D", "E"+FLAT, "E", "F", "F"+SHARP, "G", "A"+FLAT, "A", "B"+FLAT, "B" });
+        tempAlterations.put("locrian", new String[]{"C", "C"+SHARP, "D", "D"+SHARP, "E", "E" + SHARP, "F" + SHARP, "G", "G"+SHARP, "A", "A"+SHARP, "B" });
+        
+        ScaleAlterations = Collections.unmodifiableMap(tempAlterations);
+    }
 
     /**
      * A dictionary of chord names and their intervals.
@@ -131,11 +149,11 @@ public class Music {
         tempChords.put("maj7", new String[]{"M3", "P5", "M7"});
         tempChords.put("7sus", new String[]{"P4", "P5", "m7"});
         tempChords.put("dim7", new String[]{"m3", "d5", "d7"});
-        tempChords.put("m7b5", new String[]{"m3", "d5", "m7"});
+        tempChords.put("m7" + FLAT + "5", new String[]{"m3", "d5", "m7"});
         tempChords.put("mmaj7", new String[]{"m3", "P5", "M7"});
         tempChords.put("aug7", new String[]{"M3", "A5", "m7"});
-        tempChords.put("maj7b5", new String[]{"M3", "d5", "M7"});
-        tempChords.put("maj7#5", new String[]{"M3", "A5", "M7"});
+        tempChords.put("maj7" + FLAT + "5", new String[]{"M3", "d5", "M7"});
+        tempChords.put("maj7" + SHARP + "5", new String[]{"M3", "A5", "M7"});
         
         Chords = Collections.unmodifiableMap(tempChords);
         
