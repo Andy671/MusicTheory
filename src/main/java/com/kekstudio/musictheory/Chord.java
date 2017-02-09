@@ -10,7 +10,7 @@ public class Chord extends Scale{
     private String name;
     private int octave;
     private int position;
-    private String theoryDegree = "";
+    private String romanNumeral = "";
     
     /**
      * Initializes the chord with a root note and intervals.
@@ -74,10 +74,10 @@ public class Chord extends Scale{
     
     /**
      *  Sets Roman numeral string
-     * @param theoryDegree 
+     * @param romanNumeral 
      */
-    public void setTheoryDegree(String theoryDegree){
-        this.theoryDegree = theoryDegree;
+    public void setRomanNumeral(String romanNumeral){
+        this.romanNumeral = romanNumeral;
     }
       
     /**
@@ -101,7 +101,7 @@ public class Chord extends Scale{
      * @return Roman Numeral (e.g. iv7, bV, IV)
      */
     public String getTheoryDegree(){
-        return theoryDegree;
+        return romanNumeral;
     }
     
     @Override
@@ -116,33 +116,5 @@ public class Chord extends Scale{
     }    
 
     
-    public static String toTheoryDegree(String baseRomanDegree, String chordType){
-        if(!Music.Chords.containsKey(chordType)){
-            throw new MusicTheoryException("Unknown chord type '" + chordType + "'");
-        }
-        
-        String newRoman = baseRomanDegree;
-        String newChordType;
-        
-        if(chordType.contains("m") && !chordType.contains("maj")){
-            newRoman = newRoman.toLowerCase();
-        }
-        
-        switch (chordType) {
-            case "dim":
-                newChordType = chordType.replace("dim", "°");
-                break;
-            case "aug":
-                newChordType = chordType.replace("aug", "+");
-                break;
-            default:
-                newChordType = chordType.replace("m", "");
-                newChordType = newChordType.replace("aj", "");
-                break;
-        }
-        
-        newRoman += newChordType;
-        
-        return newRoman;
-    }
+
 }
