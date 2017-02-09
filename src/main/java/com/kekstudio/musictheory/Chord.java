@@ -26,7 +26,10 @@ public class Chord extends Scale{
             
             throw new MusicTheoryException("Unknown chord with intervals '" + intervalsString + "'");
         }
-        name = rootNote.getName() + Music.ChordsInverse.get(intervals);
+        String chordType = Music.ChordsInverse.get(intervals);
+        if(chordType.equals("maj"))
+            chordType = "";
+        name = rootNote.getName() + chordType;
         octave = rootNote.getOctave();
         position = 0;
     }
@@ -78,6 +81,14 @@ public class Chord extends Scale{
      */
     public void setRomanNumeral(String romanNumeral){
         this.romanNumeral = romanNumeral;
+    }
+    
+    /**
+     * Gets the chord name
+     * @return chord name
+     */
+    public String getName(){
+        return name;
     }
       
     /**
