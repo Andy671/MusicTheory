@@ -104,7 +104,7 @@ public class Key implements Comparable<Key> {
      * @return
      */
     public Chord chord(String traditionalDegree){
-        return chord(Degree.toBaseRoman(traditionalDegree), Degree.toChordType(traditionalDegree));
+        return chord(Degree.toBaseRomanCaps(traditionalDegree), Degree.toChordType(traditionalDegree));
     }
     
     /**
@@ -113,6 +113,14 @@ public class Key implements Comparable<Key> {
      */
     public Scale getScale(){
         return scale;
+    }
+    
+    /**
+     * Returns the type of the key (e.g. major, minor, dorian..)
+     * @return key type
+     */
+    public String getType(){
+        return scaleKeyType;
     }
     
     @Override

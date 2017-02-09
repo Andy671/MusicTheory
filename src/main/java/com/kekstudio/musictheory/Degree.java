@@ -40,6 +40,14 @@ public class Degree {
 
     public static String toBaseRoman(String romanNumeral){
         String baseRoman = romanNumeral.replaceAll(REGEX_CHORD_TYPE, "");
+        return baseRoman;
+    }
+    
+    public static String toBaseRomanCaps(String romanNumeral){
+        String baseRoman = romanNumeral.replaceAll(REGEX_CHORD_TYPE, "");
+        if(baseRoman.charAt(0)==Music.FLAT){
+            return baseRoman.substring(0,1) + baseRoman.substring(1).toUpperCase();
+        }
         return baseRoman.toUpperCase();
     }
     
