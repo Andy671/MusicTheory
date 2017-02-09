@@ -93,10 +93,27 @@ public class Key implements Comparable<Key> {
         }
         
         Chord returnChord = rootNote.chord(type);
-        returnChord.setTheoryDegree(Chord.toTheoryDegree(degree, type));
+        returnChord.setRomanNumeral(Degree.toRomanNumeral(degree, type));
         
         return returnChord;
     } 
+    
+    /**
+     * Initializes the chord with a traditional degree (case-sensitive).
+     * @param traditionalDegree traditional degree of the chord (e.g. iv, V, i7).
+     * @return
+     */
+    public Chord chord(String traditionalDegree){
+        return chord(Degree.toBaseRoman(traditionalDegree), Degree.toChordType(traditionalDegree));
+    }
+    
+    /**
+     * Returns the scale of this key.
+     * @return scale
+     */
+    public Scale getScale(){
+        return scale;
+    }
     
     @Override
     public int compareTo(Key otherKey) {

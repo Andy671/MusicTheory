@@ -184,10 +184,24 @@ public class Music {
         
     }
     
-    
+    /**
+     * A dictionary of major chord names and their degree names.
+     */
     public static final Map<String, String> ChordsMajor;
+
+    /**
+     * A dictionary of minor chord names and their degree names.
+     */
     public static final Map<String, String> ChordsMinor;
+
+    /**
+     * An inverse dictionary of major chord names and their degree names.
+     */
     public static final Map<String, String> ChordsMajorInverse;
+
+    /**
+     * An inverse dictionary of minor chord names and their degree names.
+     */
     public static final Map<String, String> ChordsMinorInverse;
     
     static{
