@@ -183,6 +183,56 @@ public class Music {
         ChordsInverse = Collections.unmodifiableMap(tempChordsInverse);
         
     }
+    
+    
+    public static final Map<String, String> ChordsMajor;
+    public static final Map<String, String> ChordsMinor;
+    public static final Map<String, String> ChordsMajorInverse;
+    public static final Map<String, String> ChordsMinorInverse;
+    
+    static{
+        Map<String, String> tempChordsMajor = new HashMap<>();
+        Map<String, String> tempChordsMinor = new HashMap<>();
+        
+        tempChordsMajor.put("maj", "");
+        tempChordsMajor.put("sus", "sus");
+        tempChordsMajor.put("sus2", "sus2");
+        tempChordsMajor.put("maj2", "2");
+        tempChordsMajor.put("maj6", "6");
+        tempChordsMajor.put("7", "7");
+        tempChordsMajor.put("maj7", "maj7");
+        tempChordsMajor.put("7sus", "7sus");
+        tempChordsMajor.put("maj7" + FLAT + "5", "7" + FLAT + "5");
+        tempChordsMajor.put("maj7" + SHARP + "5", "7" + SHARP + "5");
+        
+        tempChordsMinor.put("m", "");
+        tempChordsMinor.put("dim", "°");
+        tempChordsMinor.put("aug", "+");
+        tempChordsMinor.put("m2", "2");
+        tempChordsMinor.put("m6", "6");
+        tempChordsMinor.put("m7", "7");
+        tempChordsMinor.put("dim7", "°7");
+        tempChordsMinor.put("aug7", "+7");
+        tempChordsMinor.put("mmaj7", "maj7");
+        tempChordsMinor.put("m7" + FLAT + "5", "7" + FLAT + "5");
+        
+        ChordsMajor = Collections.unmodifiableMap(tempChordsMajor);
+        ChordsMinor = Collections.unmodifiableMap(tempChordsMinor);
+        
+        Map<String, String> tempChordsMajorInverse = new HashMap<>();
+        Map<String, String> tempChordsMinorInverse = new HashMap<>();
+        
+        for(String key : tempChordsMajor.keySet()){
+            tempChordsMajorInverse.put(tempChordsMajor.get(key), key);
+        }
+        
+        for(String key : tempChordsMinor.keySet()){
+            tempChordsMinorInverse.put(tempChordsMinor.get(key), key);
+        }
+        
+        ChordsMajorInverse = Collections.unmodifiableMap(tempChordsMajorInverse);
+        ChordsMinorInverse = Collections.unmodifiableMap(tempChordsMinorInverse);
+    }
 
     /**
      * A dictionary representing the circle of fifths, both major and minor.
