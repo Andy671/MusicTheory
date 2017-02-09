@@ -123,6 +123,24 @@ public class Music {
         
         ScaleAlterations = Collections.unmodifiableMap(tempAlterations);
     }
+    
+     /**
+     * A dictionary of scale in-key degrees.
+     */
+    public static final Map<String, String[]> ScaleDegrees;
+   
+    static{
+        Map<String, String[]> tempScaleDegrees = new HashMap<>();
+        tempScaleDegrees.put("major", new String[]{"I", "ii", "iii", "IV", "V", "vi", "vii°"});
+        tempScaleDegrees.put("minor", new String[]{"i", "ii°", "III", "iv", "v", "VI", "VII"});
+        tempScaleDegrees.put("dorian", new String[]{"i", "ii", "III", "IV", "v", "vi°", "VII"});
+        tempScaleDegrees.put("phrygian", new String[]{"i", "II", "III", "iv", "v°", "VI", "vii"});
+        tempScaleDegrees.put("lydian", new String[]{"I", "II", "iii", "iv°", "V", "vi", "vii"});
+        tempScaleDegrees.put("mixolydian", new String[]{"I", "ii", "iii°", "IV", "v", "vi", "VII"});
+        tempScaleDegrees.put("locrian", new String[]{"i°", "II", "iii", "iv", "V", "VI", "vii"});
+        
+        ScaleDegrees = Collections.unmodifiableMap(tempScaleDegrees);
+    }
 
     /**
      * A dictionary of chord names and their intervals.
