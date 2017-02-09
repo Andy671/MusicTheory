@@ -23,7 +23,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 ```gradle
 	dependencies {
-	        compile 'com.github.Andy671:MusicTheory:v0.6.0'
+	        compile 'com.github.Andy671:MusicTheory:v0.6.3'
 	}
 ```
 
@@ -37,7 +37,7 @@ Step 2. Add the dependency
 	dSharpNote = new Note("D#", 5);
 	System.out.println(dSharpNote); // D#5[75]
 
-	Chord dSharpm7Chord = dSharpNote.chord("m7"); 
+	Chord dSharpm7Chord = dSharpNote.chord("m7");
 	System.out.println(dSharpm7Chord); // D#m7 inversion[0] {D#5[75], F#5[78], A#5[82], C#6[85]}
 
 	Scale dSharpScale = dSharpNote.scale("minor");
