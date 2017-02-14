@@ -8,7 +8,6 @@ package com.kekstudio.musictheory;
 public class Chord extends Scale{
     
     private String name;
-    private int octave;
     private int position;
     private String romanNumeral = "";
     
@@ -30,19 +29,7 @@ public class Chord extends Scale{
         if(chordType.equals("maj"))
             chordType = "";
         name = rootNote.getName() + chordType;
-        octave = rootNote.getOctave();
         position = 0;
-    }
-    
-    /**
-     * Sets octave of the chord.
-     * @param octave
-     */
-    public void setOctave(int octave){
-        this.octave = octave;
-        for(Note note : notes){
-            note.setOctave(octave);
-        }
     }
     
     /**
@@ -89,15 +76,7 @@ public class Chord extends Scale{
      */
     public String getName(){
         return name;
-    }
-      
-    /**
-     * Gets the octave of the chord
-     * @return
-     */
-    public int getOctave(){
-        return octave;
-    }    
+    }  
     
     /**
      * Gets the inversion of the chord

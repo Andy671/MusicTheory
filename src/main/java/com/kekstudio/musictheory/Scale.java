@@ -10,8 +10,11 @@ import java.util.Arrays;
 public class Scale {
     
     protected Note[] notes;
+    protected int octave;
+    
     private String[] intervals;
-
+    
+    
     /**
      * Initializes the scale with a root note and intervals.
      * @param rootNote the root note of the scale.
@@ -26,6 +29,8 @@ public class Scale {
         for(int i = 1; i < notes.length; i++){
             notes[i] = rootNote.add(intervals[i-1]);
         }
+        
+        octave = rootNote.getOctave();
     }
     
     /**
@@ -34,6 +39,22 @@ public class Scale {
      */
     public Scale(Note[] notes){
         this.notes = notes;
+        
+        octave = notes[0].getOctave();
+    }
+    
+    /**
+     * Sets octave of the scale/chord.
+     * @param octave
+     */
+    public void setOctave(int octave){
+        this.octave = octave;
+        
+        int octaveDifference = octave - getRoot().getOctave();
+        
+        for(Note note : notes){
+            note.setOctave(note.getOctave() + octaveDifference);
+        }
     }
     
     /**
@@ -52,6 +73,14 @@ public class Scale {
     }
     
     /**
+     * Gets the octave of the scale/chord
+     * @return
+     */
+    public int getOctave(){
+        return octave;
+    }  
+    
+    /**
      * @return the copy.
      */
     public Scale copy(){
@@ -68,7 +97,7 @@ public class Scale {
     public void sort(){
         Arrays.sort(notes);
     }
-
+    
     @Override
     public String toString() {
         String returnString  = getRoot().getName() + " ";
