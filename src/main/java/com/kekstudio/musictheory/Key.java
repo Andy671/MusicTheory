@@ -32,19 +32,27 @@ public class Key implements Comparable<Key> {
             if(!Music.ScaleAlterations.containsKey(scaleKeyType)){
                 throw new MusicTheoryException("Unknown key/scale type name '" + scaleKeyType + "'");
             }
+            
             String letter = noteName.substring(0,1);
+            
             if(!Music.Notes.containsKey(letter)){
                 throw new MusicTheoryException("Wrong note name '" + letter + "' in '" + noteName + "'");
             }
+            
             int index = Music.Notes.get(letter);
-            if(noteName.charAt(1) == Music.FLAT){
-                index = (index-1)%12;
-                if(index < 0) index += 12;
-            }else if(noteName.charAt(1) == Music.SHARP){
-                index = (index+1)%12;
-            }else {
-                throw new MusicTheoryException("Wrong note name '" + noteName + "'");
+            
+            switch (noteName.charAt(1)) {
+                case Music.FLAT:
+                    index = (index-1)%12;
+                    if(index < 0) index += 12;
+                    break;
+                case Music.SHARP:
+                    index = (index+1)%12;
+                    break;
+                default:
+                    throw new MusicTheoryException("Wrong note name '" + noteName + "'");
             }
+            
             noteName = Music.ScaleAlterations.get(scaleKeyType)[index];
         }
         init(new Note(noteName), scaleKeyType);
@@ -58,14 +66,14 @@ public class Key implements Comparable<Key> {
     public Key(Note note, String scaleKeyType){
         init(note, scaleKeyType);
     }
-    
+
     private void init(Note note, String scaleKeyType){
         this.note = note;
         this.name = note.getName() + " " + scaleKeyType;
         this.scaleKeyType = scaleKeyType;
         scale = note.scale(scaleKeyType);
     }
-    
+
     /**
      * Initializes the chord with a degree and a type.
      * @param degree degree of the chord (e.g. bV, I, IV).
@@ -105,6 +113,14 @@ public class Key implements Comparable<Key> {
      */
     public Chord chord(String traditionalDegree){
         return chord(Degree.toBaseRomanCaps(traditionalDegree), Degree.toChordType(traditionalDegree));
+    }
+    
+    /**
+     * Returns the name of the Key (e.g. Cb, E, A#).
+     * @return name of the key.
+     */
+    public String getName(){
+        return getScale().getRoot().getName();
     }
     
     /**
