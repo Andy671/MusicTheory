@@ -73,6 +73,14 @@ public class Key implements Comparable<Key> {
         this.scaleKeyType = scaleKeyType;
         scale = note.scale(scaleKeyType);
     }
+    
+    /**
+     * Sets the octave to the key scale
+     * @param octave 
+     */
+    public void setOctave(int octave){
+        getScale().setOctave(octave);
+    }
 
     /**
      * Initializes the chord with a degree and a type.
@@ -137,6 +145,14 @@ public class Key implements Comparable<Key> {
      */
     public String getType(){
         return scaleKeyType;
+    }
+    
+    /**
+     * Returns the octave number of the key scale.
+     * @return octave number.
+     */
+    public int getOctave(){
+        return getScale().getOctave();
     }
     
     @Override
