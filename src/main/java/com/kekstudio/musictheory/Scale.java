@@ -50,7 +50,7 @@ public class Scale {
     public void setOctave(int octave){
         this.octave = octave;
         
-        int octaveDifference = octave - getRoot().getOctave();
+        int octaveDifference = getRoot().getOctave() - octave;
         
         for(Note note : notes){
             note.setOctave(note.getOctave() + octaveDifference);
