@@ -56,6 +56,12 @@ public class Music {
      * A dictionary of intervals symbols and their value.
      */
     public static final Map<String, Interval> Intervals;
+    
+    /**
+     * An inverse dictionary of intervals symbols and their value.
+    */
+    public static final Map<Interval, String> IntervalsInverse;
+    
     static{
         Map<String, Interval> tempIntervals = new HashMap<>();
         tempIntervals.put("m2", new Interval(1, 1));
@@ -76,6 +82,13 @@ public class Music {
         tempIntervals.put("P8", new Interval(7, 12));
         
         Intervals = Collections.unmodifiableMap(tempIntervals);
+        
+        Map<Interval, String> tempIntervalsInverse = new HashMap<>();
+        for(String key : tempIntervals.keySet()){
+            tempIntervalsInverse.put(tempIntervals.get(key), key);
+        }
+        
+        IntervalsInverse = Collections.unmodifiableMap(tempIntervalsInverse);
     }
 
     /**
