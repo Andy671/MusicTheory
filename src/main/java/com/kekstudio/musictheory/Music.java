@@ -20,6 +20,7 @@ public class Music {
      * A dictionary of notes and an integer representing their index.
      */
     public static final Map<String, Integer> Notes;
+    
     static{
         Map<String, Integer> tempNotes = new HashMap<>();
         tempNotes.put("C", 0);
@@ -36,6 +37,7 @@ public class Music {
      * A list of musical degrees.
      */
     public static final List<String> Degrees;
+    
     static{
         String[] tempDegrees = {"I", "II", "III", "IV", "V", "VI", "VII"};
         Degrees = Collections.unmodifiableList(new ArrayList<>(Arrays.asList(tempDegrees)));
@@ -45,6 +47,7 @@ public class Music {
      * The letters used to represent notes sorted in alphabetical order.
      */
     public static final String[] Alphabet;
+    
     static{
         String[] keySetArray = Notes.keySet().toArray(new String[Notes.size()]);
         Arrays.sort(keySetArray);
@@ -99,6 +102,7 @@ public class Music {
      * An inverse dictionary of scale names and their intervals.
      */
     public static final Map<String[], String> ScalesInverse;
+    
     static{
         Map<String, String[]> tempScales = new HashMap<>();
         tempScales.put("major", new String[]{"M2", "M3", "P4", "P5", "M6", "M7"});
@@ -163,6 +167,7 @@ public class Music {
      * An inverse dictionary of chord names and their intervals.
      */
     public static final Map<String[], String> ChordsInverse;
+    
     static{
         Map<String, String[]> tempChords = new HashMap<>();
         tempChords.put("m", new String[]{"m3", "P5"});
@@ -265,6 +270,7 @@ public class Music {
      * A dictionary representing the circle of fifths, both major and minor.
      */
     public static final Map<String, String[]> CircleOfFifths;
+    
     static{
         Map<String, String[]> tempCircle = new HashMap<>();
         tempCircle.put("major", new String[]{"C", "G", "D", "A", "E", "B", "F"+SHARP, "C"+SHARP,
