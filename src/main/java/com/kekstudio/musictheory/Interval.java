@@ -16,7 +16,36 @@ public class Interval{
     }
     
     @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + this.degree;
+        hash = 23 * hash + this.steps;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Interval other = (Interval) obj;
+        if (this.degree != other.degree) {
+            return false;
+        }
+        if (this.steps != other.steps) {
+            return false;
+        }
+        return true;
+    }
+    
+    @Override
     public String toString(){
-        return Music.Degrees.get(degree) + "(" + String.valueOf(steps) + ")";
+        return Music.IntervalsInverse.get(this);
     }
 }
