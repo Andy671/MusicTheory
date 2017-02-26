@@ -246,7 +246,7 @@ public class Music {
         tempChordsMinor.put("dim7", "°7");
         tempChordsMinor.put("aug7", "+7");
         tempChordsMinor.put("mmaj7", "maj7");
-        tempChordsMinor.put("m7" + FLAT + "5", "7" + FLAT + "5");
+        tempChordsMinor.put("m7" + FLAT + "5", "ø7");
         
         ChordsMajor = Collections.unmodifiableMap(tempChordsMajor);
         ChordsMinor = Collections.unmodifiableMap(tempChordsMinor);

@@ -7,6 +7,7 @@ package com.kekstudio.musictheory;
 public class Degree {
     private static final String REGEX_BASE_ROMAN = "^(?i)[" + Music.SHARP + Music.FLAT + "IV]*";
     private static final String REGEX_CHORD_TYPE = "(?i)[^IV]*$";
+    private static final String REGEX_IN_KEY_CHORD_TYPE = "(?i)[^" + "ø" + "°" + "+" + "IV]*$";
     
     public static String toRomanNumeral(String baseRomanDegree, String chordType){
         if(!Music.Chords.containsKey(chordType)){
@@ -40,6 +41,11 @@ public class Degree {
 
     public static String toBaseRoman(String romanNumeral){
         String baseRoman = romanNumeral.replaceAll(REGEX_CHORD_TYPE, "");
+        return baseRoman;
+    }
+    
+    public static String toInKeyRoman(String romanNumeral){
+        String baseRoman = romanNumeral.replaceAll(REGEX_IN_KEY_CHORD_TYPE, "");
         return baseRoman;
     }
     
