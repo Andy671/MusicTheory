@@ -1,5 +1,7 @@
 package com.kekstudio.musictheory;
 
+import java.util.Arrays;
+
 /**
  * Music Key.
  * @author Andy671
@@ -121,6 +123,41 @@ public class Key implements Comparable<Key> {
      */
     public Chord chord(String traditionalDegree){
         return chord(Degree.toBaseRomanCaps(traditionalDegree), Degree.toChordType(traditionalDegree));
+    }
+    
+    public Chord identifyTriad(int noteInt){
+        return identifyChord(new int[]{noteInt, noteInt+2, noteInt+4});
+    }
+    
+    public Chord identifySeventh(int noteInt){
+        return identifyChord(new int[]{noteInt, noteInt+2, noteInt+4, noteInt+6});
+    }
+    
+    private Chord identifyChord(int[] noteIndexes){
+        String[] intervalStrings = new String[noteIndexes.length-1];
+        for(int i = 0; i < noteIndexes.length-1 ; i++){
+            Interval tempInterval = identifyInterval(noteIndexes[0], noteIndexes[i + 1]);
+            intervalStrings[i] = tempInterval.toString();
+        }
+        String chordType = "";
+        for(String[] key : Music.ChordsInverse.keySet()){
+            if(Arrays.equals(intervalStrings, key)){
+                chordType = Music.ChordsInverse.get(key);
+            }
+        }
+        
+        return scale.getNotes()[noteIndexes[0]].chord(chordType);
+    }
+    
+    private Interval identifyInterval(int firstNoteIndex, int secondNoteIndex){
+        int degree = Math.abs(firstNoteIndex - secondNoteIndex);
+        int octaves = secondNoteIndex / 7;
+        
+        int midiValue = scale.getNotes()[secondNoteIndex % 7].getMidiValue() + octaves*12;
+      
+        int steps = Math.abs(scale.getNotes()[firstNoteIndex].getMidiValue() - midiValue);
+        
+        return new Interval(degree, steps);
     }
     
     /**
