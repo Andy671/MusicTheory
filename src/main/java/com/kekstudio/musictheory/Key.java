@@ -125,11 +125,27 @@ public class Key implements Comparable<Key> {
         return chord(Degree.toBaseRomanCaps(traditionalDegree), Degree.toChordType(traditionalDegree));
     }
     
+    /**
+     * Returns triad-chord from the given key, with the specified note index.
+     * @param noteInt note index in the given key.
+     * @return chord
+     */
     public Chord identifyTriad(int noteInt){
+        if(noteInt >= scale.notes.length || noteInt < 0)
+            throw new MusicTheoryException("Out of range index, when creating triad from key: " + noteInt);
+        
         return identifyChord(new int[]{noteInt, noteInt+2, noteInt+4});
     }
     
+    /**
+     * Returns seventh-chord from the given key, with the specified note index.
+     * @param noteInt note index in the given key.
+     * @return chord
+     */
     public Chord identifySeventh(int noteInt){
+        if(noteInt >= scale.notes.length || noteInt < 0)
+            throw new MusicTheoryException("Out of range index, when creating seventh from key: " + noteInt);
+        
         return identifyChord(new int[]{noteInt, noteInt+2, noteInt+4, noteInt+6});
     }
     
