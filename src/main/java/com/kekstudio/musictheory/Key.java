@@ -162,7 +162,17 @@ public class Key implements Comparable<Key> {
             }
         }
         
-        return scale.getNotes()[noteIndexes[0]].chord(chordType);
+        Chord chord = scale.getNotes()[noteIndexes[0]].chord(chordType);
+        String adding = "";
+        
+        if(noteIndexes.length == 4)
+            adding += "7";
+        chord.setRomanNumeral(Degree.toInKeyRoman(
+                                Degree.toRomanNumeral(
+                                    Music.Degrees.get(noteIndexes[0]), chordType)) + adding);
+        
+        
+        return chord;
     }
     
     private Interval identifyInterval(int firstNoteIndex, int secondNoteIndex){
