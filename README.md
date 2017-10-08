@@ -63,7 +63,3 @@ For more info check out JavaDoc in the source code
 ## Contribution
 * Feel free to fork the repo, make pull requests or fix existing bug
 * Feel free to open issues if you find some bug or unexpected behaviour
-
-## Buy me a cup of coffee
-If I saved your time, you can make me shine!
-> Bitcoin Wallet: 15BuUMAW2jUdStPVkoNPt85P8tJnAy5vD4
